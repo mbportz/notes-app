@@ -1,0 +1,128 @@
+# --- Global ---
+.DS_Store
+Thumbs.db
+.env
+.env.*
+*.log
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- React Native (NotesApp) ---
+
+# Node / package managers
+NotesApp/node_modules/
+NotesApp/npm-debug.log
+NotesApp/yarn-error.log
+
+# Expo / Metro
+NotesApp/.expo/
+NotesApp/.expo-shared/
+NotesApp/.expo-dev/
+NotesApp/.metro-cache/
+NotesApp/expo-debug.log
+NotesApp/expo-error.log
+NotesApp/.vscode/
+
+# iOS / Xcode
+NotesApp/ios/Pods/
+NotesApp/ios/build/
+NotesApp/ios/DerivedData/
+NotesApp/ios/**/*.pbxuser
+!NotesApp/ios/**/default.pbxuser
+NotesApp/ios/**/*.mode1v3
+!NotesApp/ios/**/default.mode1v3
+NotesApp/ios/**/*.mode2v3
+!NotesApp/ios/**/default.mode2v3
+NotesApp/ios/**/*.perspectivev3
+!NotesApp/ios/**/default.perspectivev3
+NotesApp/ios/xcuserdata/
+NotesApp/ios/**/*.xccheckout
+NotesApp/ios/**/*.moved-aside
+NotesApp/ios/**/*.hmap
+NotesApp/ios/**/*.ipa
+NotesApp/ios/**/*.xcuserstate
+NotesApp/ios/**/.xcode.env.local
+
+# Android / IntelliJ
+NotesApp/android/.gradle/
+NotesApp/android/build/
+NotesApp/android/app/build/
+NotesApp/android/local.properties
+NotesApp/android/*.iml
+NotesApp/android/**/*.iml
+NotesApp/android/*.hprof
+NotesApp/android/.cxx/
+NotesApp/android/.idea/
+NotesApp/android/**/*.keystore
+!NotesApp/android/**/debug.keystore
+NotesApp/android/.kotlin/
+
+# Bundles / artifacts
+NotesApp/**/*.jsbundle
+NotesApp/*.apk
+NotesApp/*.aab
+NotesApp/*.ipa
+NotesApp/web-build/
+
+# Fastlane
+NotesApp/**/fastlane/report.xml
+NotesApp/**/fastlane/Preview.html
+NotesApp/**/fastlane/screenshots
+NotesApp/**/fastlane/test_output
+
+# Ruby / CocoaPods vendor (RN iOS only)
+NotesApp/**/vendor/bundle/
+
+# Metro health check
+NotesApp/.metro-health-check*
+
+# Test coverage
+NotesApp/coverage
+
+# Yarn Berry
+NotesApp/.yarn/*
+!NotesApp/.yarn/patches
+!NotesApp/.yarn/plugins
+!NotesApp/.yarn/releases
+!NotesApp/.yarn/sdks
+!NotesApp/.yarn/versions
+
+# --- Laravel (notes-api-v1) ---
+notes-api-v1/vendor/
+notes-api-v1/node_modules/
+notes-api-v1/storage/*.key
+notes-api-v1/storage/framework/cache/*
+notes-api-v1/storage/framework/sessions/*
+notes-api-v1/storage/framework/views/*
+notes-api-v1/storage/logs/*
+notes-api-v1/bootstrap/cache/*.php
+notes-api-v1/public/storage
+
+# Laravel env
+notes-api-v1/.env
+notes-api-v1/.env.testing
+
+# Composer / PHPUnit / IDE
+notes-api-v1/composer.lock
+notes-api-v1/phpunit.xml
+notes-api-v1/.phpactor.json
+notes-api-v1/.phpunit.result.cache
+notes-api-v1/.phpunit.cache
+notes-api-v1/.vscode
+notes-api-v1/.idea
+notes-api-v1/.nova
+notes-api-v1/.fleet
+notes-api-v1/.zed
+notes-api-v1/auth.json
+
+# Laravel build outputs
+notes-api-v1/public/build
+notes-api-v1/public/hot
+notes-api-v1/storage/pail
+
+# Homestead
+notes-api-v1/Homestead.json
+notes-api-v1/Homestead.yaml
