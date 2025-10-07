@@ -1,0 +1,4 @@
+/Users/marcbryanportuguez/Documents/files/projects/fullstack-projects/notes/NotesApp/android/app/.cxx/Debug/5384w4oc/x86_64/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/foo.dir
+/Users/marcbryanportuguez/Documents/files/projects/fullstack-projects/notes/NotesApp/android/app/.cxx/Debug/5384w4oc/x86_64/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/boo.dir
+/Users/marcbryanportuguez/Documents/files/projects/fullstack-projects/notes/NotesApp/android/app/.cxx/Debug/5384w4oc/x86_64/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/edit_cache.dir
+/Users/marcbryanportuguez/Documents/files/projects/fullstack-projects/notes/NotesApp/android/app/.cxx/Debug/5384w4oc/x86_64/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/rebuild_cache.dir
