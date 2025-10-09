@@ -17,6 +17,7 @@ module.exports = {
           '@lib': './src/lib',
           '@styles': './src/styles',
           '@utils': './src/utils',
+          '@shared': './src/shared',
         },
         extensions: ['.ts', '.tsx', '.js', '.json'],
       },

@@ -4,6 +4,7 @@ import HomeScreen from '../../features/home/screens/HomeScreen';
 import ProfileScreen from '@features/auth/screens/ProfileScreen';
 
 const Tab = createBottomTabNavigator();
+
 export default function TabNavigator() {
   return (
     <Tab.Navigator>

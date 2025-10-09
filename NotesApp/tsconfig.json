@@ -1,9 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2018",
-    "lib": [
-      "es2018"
-    ],
+    "lib": ["es2018"],
     "jsx": "react",
     "strict": true,
     "noEmit": true,
@@ -13,30 +11,14 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "@app/*": [
-        "src/app/*"
-      ],
-      "@features/*": [
-        "src/features/*"
-      ],
-      "@store/*": [
-        "src/store/*"
-      ],
-      "@lib/*": [
-        "src/lib/*"
-      ],
-      "@styles/*": [
-        "src/styles/*"
-      ],
-      "@utils/*": [
-        "src/utils/*"
-      ]
+      "@app/*": ["src/app/*"],
+      "@features/*": ["src/features/*"],
+      "@store/*": ["src/store/*"],
+      "@lib/*": ["src/lib/*"],
+      "@styles/*": ["src/styles/*"],
+      "@utils/*": ["src/utils/*"],
+      "@shared/*": ["src/shared/*"]
     }
   },
-  "include": [
-    "App.tsx",
-    "src/**/*",
-    "src/types/**/*",
-    "nativewind-env.d.ts"
-  ]
+  "include": ["App.tsx", "src/**/*", "src/types/**/*", "nativewind-env.d.ts"]
 }
