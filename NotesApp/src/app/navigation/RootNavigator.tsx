@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TabNavigator from './TabNavigator';
-import SignInScreen from '@features/auth/screens/SignInScreen';
+import AuthScreen from '@features/auth/screens/AuthScreen';
 
 const Stack = createNativeStackNavigator();
 export default function RootNavigator() {
@@ -13,7 +13,7 @@ export default function RootNavigator() {
         {isSignedIn ? (
           <Stack.Screen name="App" component={TabNavigator} />
         ) : (
-          <Stack.Screen name="SignIn" component={SignInScreen} />
+          <Stack.Screen name="Auth" component={AuthScreen} />
         )}
       </Stack.Navigator>
     </NavigationContainer>
