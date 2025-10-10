@@ -6,6 +6,8 @@ import TextLink from './TextLink';
 import AuthFooterLinks from './AuthFooterLinks';
 import AuthCard from './AuthCard';
 import PasswordField from './PasswordField';
+import SignInForm from './SignInForm';
+import SignUpForm from './SignUpForm';
 
 export {
   GradientButton,
@@ -16,4 +18,6 @@ export {
   AuthFooterLinks,
   AuthCard,
   PasswordField,
+  SignInForm,
+  SignUpForm,
 };

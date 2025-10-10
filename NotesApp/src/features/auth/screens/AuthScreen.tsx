@@ -1,26 +1,35 @@
-import React from 'react';
-import {
-  EmailField,
-  PasswordField,
-  GradientButton,
-  AppBrand,
-  FormMessage,
-  AuthFooterLinks,
-  AuthCard,
-} from '../components';
-import { Screen } from '@shared/components';
+import React, { useState } from 'react';
+import { AppBrand, SignInForm, SignUpForm } from '../components';
+import { Screen } from '@shared/ui';
+
+type authView = 'signin' | 'signup';
 
 const AuthScreen = () => {
+  const [form, setForm] = useState<authView>('signin');
+
   return (
-    <Screen pad="lg" gap="xl">
+    <Screen pad="lg" gap="xl" scroll>
       <AppBrand brandTitle="Notes App" tagline="Your thoughts, organized beautifully" />
-      <AuthCard pad="lg" gap="md">
-        <FormMessage title="Welcome back" subtitle="Sign in to access your notes" />
-        <EmailField label="Email" placeholder="Enter your email" />
-        <PasswordField label="Password" placeholder="Enter your password" />
-        <GradientButton title="Sign In" />
-        <AuthFooterLinks />
-      </AuthCard>
+      {form === 'signup' ? (
+        <SignUpForm
+          footer={{
+            variantAction: () => {
+              setForm('signin');
+            },
+          }}
+        />
+      ) : (
+        <SignInForm
+          footer={{
+            variantAction: () => {
+              setForm('signup');
+            },
+            forgot: {
+              onPress: () => {},
+            },
+          }}
+        />
+      )}
     </Screen>
   );
 };
