@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Text } from 'react-native';
-import type { TextFieldProps } from '@shared/components/TextField';
-import { TextField } from '@shared/components';
+import type { TextFieldProps } from '@shared/ui/TextField';
+import { TextField } from '@shared/ui';
 
 const PasswordField = ({
   ...inputProps
