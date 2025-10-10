@@ -80,7 +80,7 @@ const AuthFooterLinks = ({
 
       {computedPrompt && (
         <View className="flex-row items-center gap-2">
-          <Text className="font-medium text-body text-neutral-500">{computedPrompt.text}</Text>
+          <Text className="font-medium text-body text-text-muted">{computedPrompt.text}</Text>
           <TextLink linkTitle={computedPrompt.actionLabel} onPress={computedPrompt.onPress} />
         </View>
       )}
