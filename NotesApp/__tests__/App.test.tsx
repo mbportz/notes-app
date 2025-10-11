@@ -1,9 +1,8 @@
-// __tests__/App.test.tsx
 import React from 'react';
-import ReactTestRenderer from 'react-test-renderer';
-import App from '../App';
+import { render } from '@testing-library/react-native';
+import { Text } from 'react-native';
 
-test('renders correctly', () => {
-  const tree = ReactTestRenderer.create(<App />).toJSON();
-  expect(tree).toBeTruthy(); // ✅ at least one assertion
+test('renders hello text', () => {
+  const { getByText } = render(<Text>Hello Jest!</Text>);
+  expect(getByText('Hello Jest!')).toBeTruthy();
 });
