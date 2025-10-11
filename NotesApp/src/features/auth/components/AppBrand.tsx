@@ -3,7 +3,7 @@ import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import MaskedView from '@react-native-masked-view/masked-view';
 
-type AppBrandProps = {
+export type AppBrandProps = {
   brandTitle: string;
   tagline?: string;
   containerClassName?: string;
