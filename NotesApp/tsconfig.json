@@ -18,7 +18,8 @@
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"],
       "@shared/*": ["src/shared/*"]
-    }
+    },
+    "types": ["jest", "react-native"]
   },
   "include": ["App.tsx", "src/**/*", "src/types/**/*", "nativewind-env.d.ts"]
 }

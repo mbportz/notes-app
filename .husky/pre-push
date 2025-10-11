@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+npm --prefix NotesApp run typecheck && npm --prefix NotesApp run test
