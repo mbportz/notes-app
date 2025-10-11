@@ -1,0 +1,31 @@
+{
+   "name": "notes",
+   "version": "1.0.0",
+   "description": "Full stack notes app",
+   "homepage": "https://github.com/mbportz/notes-app#readme",
+   "bugs": {
+      "url": "https://github.com/mbportz/notes-app/issues"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/mbportz/notes-app.git"
+   },
+   "license": "ISC",
+   "author": "",
+   "type": "commonjs",
+   "main": "index.js",
+   "lint-staged": {
+      "NotesApp/**/*.{js,jsx,ts,tsx}": [
+         "npx --prefix NotesApp eslint --fix --cache --config NotesApp/.eslintrc.js",
+         "npx --prefix NotesApp prettier --write --config NotesApp/.prettierrc"
+      ],
+      "NotesApp/**/*.{json,md}": [
+         "npx --prefix NotesApp prettier --write --config NotesApp/.prettierrc"
+      ]
+   },
+   "scripts": {
+      "typecheck": "echo 'define me at root (turbo/nx/workspaces foreach)'",
+      "lint": "eslint .",
+      "format": "prettier --write ."
+   }
+}

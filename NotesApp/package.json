@@ -13,13 +13,6 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "prepare": "husky"
   },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{json,md}": "prettier --write"
-  },
   "dependencies": {
     "@react-native-masked-view/masked-view": "^0.3.2",
     "@react-native/new-app-screen": "0.81.4",
