@@ -1,8 +1,9 @@
 export default {
   preset: 'react-native',
-  setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   transformIgnorePatterns: [
-    'node_modules/(?!(react-native|@react-native|@react-navigation|nativewind|react-clone-referenced-element|react-redux)/)',
+    // tell Jest to transform NativeWind + css-interop (and common RN libs)
+    'node_modules/(?!(react-native|@react-native|@react-navigation|react-native-reanimated|nativewind|react-native-css-interop|react-clone-referenced-element|react-redux)/)',
   ],
   testPathIgnorePatterns: ['/node_modules/', '/android/', '/ios/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
