@@ -27,17 +27,17 @@ describe('AppBrand', () => {
       <AppBrand brandTitle="NotesApp" colors={colors} start={start} end={end} />,
     );
 
-    const gradient = getByTestId('linear-gradient');
-    expect(gradient.props.colors).toEqual(colors);
-    expect(gradient.props.start).toEqual(start);
-    expect(gradient.props.end).toEqual(end);
+    const gradient = getByTestId('linear-gradient').props;
+    expect(gradient.colors).toEqual(colors);
+    expect(gradient.start).toEqual(start);
+    expect(gradient.end).toEqual(end);
   });
 
   it('uses default gradient props when not provided', () => {
     const { getByTestId } = render(<AppBrand brandTitle="NotesApp" />);
-    const gradient = getByTestId('linear-gradient');
-    expect(gradient.props.colors).toEqual(['#853ced', '#d046ee']);
-    expect(gradient.props.start).toEqual({ x: 0, y: 0 });
-    expect(gradient.props.end).toEqual({ x: 1, y: 0 });
+    const gradient = getByTestId('linear-gradient').props;
+    expect(gradient.colors).toEqual(['#853ced', '#d046ee']);
+    expect(gradient.start).toEqual({ x: 0, y: 0 });
+    expect(gradient.end).toEqual({ x: 1, y: 0 });
   });
 });

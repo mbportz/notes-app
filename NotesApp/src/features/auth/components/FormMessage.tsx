@@ -2,8 +2,8 @@ import { View, Text } from 'react-native';
 import React from 'react';
 
 type FormMessage = {
-  title: string;
-  subtitle: string;
+  title?: string;
+  subtitle?: string;
   containerClassName?: string;
   titleClassName?: string;
   subtitleClassName?: string;
