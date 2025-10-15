@@ -8,6 +8,7 @@ import AuthCard from './AuthCard';
 import PasswordField from './PasswordField';
 import SignInForm from './SignInForm';
 import SignUpForm from './SignUpForm';
+import ForgotPasswordForm from './ForgotPasswordForm';
 
 export {
   GradientButton,
@@ -20,4 +21,5 @@ export {
   PasswordField,
   SignInForm,
   SignUpForm,
+  ForgotPasswordForm,
 };

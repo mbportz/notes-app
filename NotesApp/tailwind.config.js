@@ -46,10 +46,11 @@ module.exports = {
       // 🔤 Type scale (comfortable mobile sizes)
       fontSize: {
         display: 40,
-        h1: 22,
-        body: 16,
-        label: 15,
+        h1: 26,
+        body: 18,
+        label: 17,
         sm: 12,
+        md: 16,
       },
       lineHeight: {
         display: '34px',
