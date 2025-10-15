@@ -1,7 +1,8 @@
 // src/features/auth/components/AuthFooterLinks.tsx
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 import TextLink from './TextLink';
+import { ArrowLeft } from 'lucide-react-native';
 
 type Align = 'left' | 'center' | 'right';
 type Gap = 'sm' | 'md' | 'lg';
@@ -41,7 +42,7 @@ export type AuthFooterLinksProps = {
    * - 'signin' => "Don't have an account?" + "Sign up"
    * - 'signup' => "Already have an account?" + "Sign in"
    */
-  variant?: 'signin' | 'signup';
+  variant?: 'signin' | 'signup' | 'forgotpassword';
   /** Required if you use variant without passing prompt */
   variantAction?: () => void;
 
@@ -61,7 +62,7 @@ const AuthFooterLinks = ({
 }: AuthFooterLinksProps) => {
   // If no custom prompt passed, build one from variant
   let computedPrompt = prompt;
-  if (!computedPrompt && variant && variantAction) {
+  if (!computedPrompt && variant !== 'forgotpassword' && variantAction) {
     computedPrompt =
       variant === 'signin'
         ? { text: "Don't have an account?", actionLabel: 'Sign up', onPress: variantAction }
@@ -83,6 +84,22 @@ const AuthFooterLinks = ({
           <Text className="font-medium text-body text-text-muted">{computedPrompt.text}</Text>
           <TextLink linkTitle={computedPrompt.actionLabel} onPress={computedPrompt.onPress} />
         </View>
+      )}
+
+      {variant === 'forgotpassword' && (
+        <Pressable onPress={variantAction}>
+          {({ pressed }) => (
+            <View className="flex-row items-center gap-2">
+              {/* <Ionicons name="home" color={pressed ? '#853ced' : '#6B7280'} size={24} /> */}
+              <ArrowLeft color={pressed ? '#853ced' : '#6B7280'} size={20} strokeWidth={2} />
+              <Text
+                className={`font-semibold text-md ${pressed ? 'text-primary-600' : 'text-text-muted'}`}
+              >
+                Back to Login
+              </Text>
+            </View>
+          )}
+        </Pressable>
       )}
     </View>
   );

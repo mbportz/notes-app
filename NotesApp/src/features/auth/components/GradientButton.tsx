@@ -19,7 +19,7 @@ const GradientButton = ({ title }: GradientButtonProps) => {
         className="absolute inset-0"
       >
         <View className="h-full items-center justify-center">
-          <Text className="text-body font-bold text-center text-neutral-100">{title}</Text>
+          <Text className="text-md font-bold text-center text-neutral-100">{title}</Text>
         </View>
       </LinearGradient>
     </TouchableOpacity>

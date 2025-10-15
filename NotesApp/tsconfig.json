@@ -20,7 +20,8 @@
       "@utils/*": ["src/utils/*"],
       "@shared/*": ["src/shared/*"]
     },
-    "types": ["jest", "react-native"]
+    "types": ["jest", "react-native"],
+    "typeRoots": ["./node_modules/@types", "./src/types"]
   },
   "include": [
     "App.tsx",

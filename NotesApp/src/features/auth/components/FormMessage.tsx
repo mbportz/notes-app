@@ -18,8 +18,10 @@ const FormMessage = ({
 }: FormMessage) => {
   return (
     <View className={`w-full gap-5 items-center justify-center ${containerClassName}`}>
-      <Text className={`text-h1 font-extrabold ${titleClassName}`}>{title}</Text>
-      <Text className={`text-label font-medium text-text-muted ${subtitleClassName}`}>
+      <Text className={`text-h1 font-extrabold ${titleClassName} text-center`}>{title}</Text>
+      <Text
+        className={`text-label font-medium text-text-muted text-center justify-center${subtitleClassName}`}
+      >
         {subtitle}
       </Text>
     </View>

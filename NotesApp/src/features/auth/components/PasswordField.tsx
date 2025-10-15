@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Text } from 'react-native';
+import { Pressable, Text } from 'react-native';
 import type { TextFieldProps } from '@shared/ui/TextField';
 import { TextField } from '@shared/ui';
+import { Eye, EyeClosed, View } from 'lucide-react-native';
 
 const PasswordField = ({
   ...inputProps
@@ -13,9 +14,9 @@ const PasswordField = ({
       secureTextEntry={secure}
       autoCapitalize="none"
       right={
-        <Text onPress={() => setSecure((prev) => !prev)} className="text-text-muted">
-          {secure ? '👁️‍🗨️' : '🙈'}
-        </Text>
+        <Pressable className="p-3" onPress={() => setSecure((prev) => !prev)}>
+          {secure ? <Eye color="#6B7280" /> : <EyeClosed color="#6B7280" />}
+        </Pressable>
       }
       {...inputProps}
     />

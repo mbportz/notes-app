@@ -13,9 +13,16 @@ jest.mock('../../components', () => {
     </View>
   );
 
-  const SignInForm: React.FC<{ footer?: { variantAction?: () => void } }> = ({ footer }) => (
+  const SignInForm: React.FC<{
+    footer?: { variantAction?: () => void; forgot?: { onPress: () => void } };
+  }> = ({ footer }) => (
     <View>
       <Text testID="signin-form">Sign In Form</Text>
+
+      <Pressable testID="forgot-password" onPress={footer?.forgot?.onPress}>
+        <Text>Forgot password?</Text>
+      </Pressable>
+
       <Pressable testID="go-to-signup" onPress={footer?.variantAction}>
         <Text>Go to Sign Up</Text>
       </Pressable>
@@ -31,7 +38,18 @@ jest.mock('../../components', () => {
     </View>
   );
 
-  return { AppBrand, SignInForm, SignUpForm };
+  const ForgotPasswordForm: React.FC<{ footer?: { variantAction?: () => void } }> = ({
+    footer,
+  }) => (
+    <View>
+      <Text testID="forgot-password-form">Forgot Password Form</Text>
+      <Pressable testID="go-to-signin" onPress={footer?.variantAction}>
+        <Text>Back to Login</Text>
+      </Pressable>
+    </View>
+  );
+
+  return { AppBrand, SignInForm, SignUpForm, ForgotPasswordForm };
 });
 
 // mock @shared/ui
@@ -61,5 +79,22 @@ describe('AuthScreen', () => {
     fireEvent.press(screen.getByTestId('go-to-signin'));
     expect(screen.getByTestId('signin-form')).toBeOnTheScreen();
     expect(screen.queryByTestId('signup-form')).toBeNull();
+  });
+
+  it('navigates to Forgot Password and back to Sign In', () => {
+    render(<AuthScreen />);
+
+    // starts on Sign In
+    expect(screen.getByTestId('signin-form')).toBeOnTheScreen();
+
+    // go to Forgot Password
+    fireEvent.press(screen.getByTestId('forgot-password'));
+    expect(screen.getByTestId('forgot-password-form')).toBeOnTheScreen();
+    expect(screen.queryByTestId('signin-form')).toBeNull();
+
+    // back to Sign In
+    fireEvent.press(screen.getByTestId('go-to-signin'));
+    expect(screen.getByTestId('signin-form')).toBeOnTheScreen();
+    expect(screen.queryByTestId('forgot-password-form')).toBeNull();
   });
 });
