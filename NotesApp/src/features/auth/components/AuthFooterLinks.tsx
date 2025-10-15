@@ -3,6 +3,7 @@ import React from 'react';
 import { View, Text, Pressable } from 'react-native';
 import TextLink from './TextLink';
 import { ArrowLeft } from 'lucide-react-native';
+import colors from '@theme/colors.json';
 
 type Align = 'left' | 'center' | 'right';
 type Gap = 'sm' | 'md' | 'lg';
@@ -91,7 +92,11 @@ const AuthFooterLinks = ({
           {({ pressed }) => (
             <View className="flex-row items-center gap-2">
               {/* <Ionicons name="home" color={pressed ? '#853ced' : '#6B7280'} size={24} /> */}
-              <ArrowLeft color={pressed ? '#853ced' : '#6B7280'} size={20} strokeWidth={2} />
+              <ArrowLeft
+                color={pressed ? colors.primary.DEFAULT : colors.text.muted}
+                size={20}
+                strokeWidth={2}
+              />
               <Text
                 className={`font-semibold text-md ${pressed ? 'text-primary-600' : 'text-text-muted'}`}
               >

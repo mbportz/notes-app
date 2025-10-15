@@ -18,7 +18,8 @@
       "@lib/*": ["src/lib/*"],
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"],
-      "@shared/*": ["src/shared/*"]
+      "@shared/*": ["src/shared/*"],
+      "@theme/*": ["src/theme/*"]
     },
     "types": ["jest", "react-native"],
     "typeRoots": ["./node_modules/@types", "./src/types"]

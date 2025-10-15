@@ -1,0 +1,24 @@
+{
+  "primary": {
+    "DEFAULT": "#853ced",
+    "400": "#ac8bfa",
+    "500": "#925cf6",
+    "600": "#853ced"
+  },
+  "secondary": {
+    "DEFAULT": "#ce45ed"
+  },
+  "surface": {
+    "50": "#F7F6FB",
+    "100": "#FFFFFF"
+  },
+  "line": {
+    "200": "#E7E4F1",
+    "300": "#D9D6E6"
+  },
+  "text": {
+    "DEFAULT": "#111827",
+    "muted": "#6B7280",
+    "inverse": "#FFFFFF"
+  }
+}

@@ -21,6 +21,7 @@ module.exports = function (api) {
             '@styles': './src/styles',
             '@utils': './src/utils',
             '@shared': './src/shared',
+            '@theme': './src/theme',
           },
           extensions: ['.ts', '.tsx', '.js', '.json'],
         },

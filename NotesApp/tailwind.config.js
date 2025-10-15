@@ -1,32 +1,16 @@
 /** @type {import('tailwindcss').Config} */
+import colors from './src/theme/colors.json';
+
 module.exports = {
   content: ['./App.{ts,tsx,js,jsx}', './src/**/*.{ts,tsx,js,jsx}'],
   presets: [require('nativewind/preset')],
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: '#853ced', // main brand
-          400: '#ac8bfa',
-          500: '#925cf6',
-          600: '#853ced',
-        },
-        surface: {
-          // backgrounds
-          50: '#F7F6FB', // page bg tint
-          100: '#FFFFFF', // cards
-        },
-        line: {
-          // borders / hairlines
-          200: '#E7E4F1',
-          300: '#D9D6E6',
-        },
-        text: {
-          // copy
-          DEFAULT: '#111827', // headings
-          muted: '#6B7280', // subtitles / helper
-          inverse: '#FFFFFF', // on brand
-        },
+        primary: colors.primary,
+        surface: colors.surface,
+        line: colors.line,
+        text: colors.text,
       },
       // 🧱 Radii (rounded cards & pill buttons)
       borderRadius: {
