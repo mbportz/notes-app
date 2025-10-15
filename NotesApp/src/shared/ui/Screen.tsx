@@ -15,7 +15,7 @@ const GAP_Y: Record<Gap, string> = {
   xl: 'gap-y-11',
 };
 
-type ScreenProps = React.PropsWithChildren<{
+export type ScreenProps = React.PropsWithChildren<{
   scroll?: boolean;
   pad?: Pad; // ← choose a token
   gap?: Gap;

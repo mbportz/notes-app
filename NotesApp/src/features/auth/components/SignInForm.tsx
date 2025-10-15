@@ -9,7 +9,7 @@ import {
 } from '../components';
 import type { AuthFooterLinksProps } from './AuthFooterLinks';
 
-type SignInFormProps = {
+export type SignInFormProps = {
   footer?: Omit<AuthFooterLinksProps, 'variant'>;
 };
 
