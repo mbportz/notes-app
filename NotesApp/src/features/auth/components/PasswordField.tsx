@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Pressable, Text } from 'react-native';
+import { Pressable } from 'react-native';
 import type { TextFieldProps } from '@shared/ui/TextField';
 import { TextField } from '@shared/ui';
-import { Eye, EyeClosed, View } from 'lucide-react-native';
+import { Eye, EyeClosed } from 'lucide-react-native';
 import colors from '@shared/theme/colors.json';
 
 const PasswordField = ({
