@@ -6,6 +6,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:jest/recommended', // pulled in by @react-native/eslint-config deps
     'prettier', // turn off rules that conflict with Prettier
+    'plugin:react-native-a11y/all',
   ],
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'prettier'],
@@ -24,6 +25,9 @@ module.exports = {
   overrides: [
     {
       files: ['**/__tests__/**/*.{ts,tsx}', '**/*.test.{ts,tsx}'],
+      rules: {
+        'react-native-a11y/has-valid-accessibility-ignores-invert-colors': 'off',
+      },
       env: { jest: true },
     },
   ],

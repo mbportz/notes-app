@@ -15,7 +15,11 @@ const ForgotPasswordForm = ({ footer }: ForgotPasswordFormProps) => {
       />
       <EmailField label="Email" placeholder="Enter your email" />
       <GradientButton title="Send Reset Instructions" />
-      <AuthFooterLinks variant={'forgotpassword'} {...footer} />
+      <AuthFooterLinks
+        variant={'forgot-password'}
+        variantActions={() => footer?.variantAction}
+        {...footer}
+      />
     </AuthCard>
   );
 };

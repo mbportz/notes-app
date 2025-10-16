@@ -3,7 +3,7 @@ import React from 'react';
 import { View, Text, Pressable } from 'react-native';
 import TextLink from './TextLink';
 import { ArrowLeft } from 'lucide-react-native';
-import colors from '@shared/theme/colors.json';
+import Color from '@shared/theme/colors.json';
 
 type Align = 'left' | 'center' | 'right';
 type Gap = 'sm' | 'md' | 'lg';
@@ -31,7 +31,7 @@ type PromptRow = {
   onPress: () => void;
 };
 
-export type AuthFooterLinksProps = {
+type BaseProps = {
   /** Show a single "Forgot password?" row (optional) */
   forgot?: RowLink;
 
@@ -43,7 +43,7 @@ export type AuthFooterLinksProps = {
    * - 'signin' => "Don't have an account?" + "Sign up"
    * - 'signup' => "Already have an account?" + "Sign in"
    */
-  variant?: 'signin' | 'signup' | 'forgotpassword';
+
   /** Required if you use variant without passing prompt */
   variantAction?: () => void;
 
@@ -51,6 +51,18 @@ export type AuthFooterLinksProps = {
   gap?: Gap; // vertical spacing between rows
   className?: string; // extra classes for the container
 };
+
+type ForgotPasswordVariant = BaseProps & {
+  variant: 'forgot-password';
+  variantActions: () => void;
+};
+
+type AuthVariant = BaseProps & {
+  variant?: 'signin' | 'signup' | undefined;
+  variantAction?: () => void;
+};
+
+export type AuthFooterLinksProps = ForgotPasswordVariant | AuthVariant;
 
 const AuthFooterLinks = ({
   forgot,
@@ -63,7 +75,7 @@ const AuthFooterLinks = ({
 }: AuthFooterLinksProps) => {
   // If no custom prompt passed, build one from variant
   let computedPrompt = prompt;
-  if (!computedPrompt && variant !== 'forgotpassword' && variantAction) {
+  if (!computedPrompt && variant !== 'forgot-password' && variantAction) {
     computedPrompt =
       variant === 'signin'
         ? { text: "Don't have an account?", actionLabel: 'Sign up', onPress: variantAction }
@@ -87,13 +99,19 @@ const AuthFooterLinks = ({
         </View>
       )}
 
-      {variant === 'forgotpassword' && (
-        <Pressable onPress={variantAction}>
+      {variant === 'forgot-password' && (
+        <Pressable
+          onPress={variantAction}
+          accessibilityRole="link"
+          accessibilityLabel="Back to Login"
+          accessibilityHint="Returns to the sign-in screen"
+          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+        >
           {({ pressed }) => (
             <View className="flex-row items-center gap-2">
               {/* <Ionicons name="home" color={pressed ? '#853ced' : '#6B7280'} size={24} /> */}
               <ArrowLeft
-                color={pressed ? colors.primary.DEFAULT : colors.text.muted}
+                color={pressed ? Color.primary.DEFAULT : Color.text.muted}
                 size={20}
                 strokeWidth={2}
               />
