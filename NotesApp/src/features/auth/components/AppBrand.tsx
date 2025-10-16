@@ -2,7 +2,7 @@ import { View, Text } from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import MaskedView from '@react-native-masked-view/masked-view';
-import themeColors from '@theme/colors.json';
+import Color from '@shared/theme/colors.json';
 
 export type AppBrandProps = {
   brandTitle: string;
@@ -33,7 +33,7 @@ const AppBrand = ({
   containerClassName,
   rowClassName,
   titleClassName,
-  colors = [themeColors.primary.DEFAULT, themeColors.secondary.DEFAULT],
+  colors = [Color.primary.DEFAULT, Color.secondary.DEFAULT],
   start = { x: 0, y: 0 },
   end = { x: 1, y: 0 },
 }: AppBrandProps) => {

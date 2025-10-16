@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-import colors from './src/theme/colors.json';
+import tokens from './src/shared/theme/colors.json';
 
 module.exports = {
   content: ['./App.{ts,tsx,js,jsx}', './src/**/*.{ts,tsx,js,jsx}'],
@@ -7,10 +7,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: colors.primary,
-        surface: colors.surface,
-        line: colors.line,
-        text: colors.text,
+        primary: tokens.primary,
+        surface: tokens.surface,
+        line: tokens.line,
+        text: tokens.text,
       },
       // 🧱 Radii (rounded cards & pill buttons)
       borderRadius: {

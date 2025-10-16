@@ -6,11 +6,33 @@ type TextLinkProps = {
   containerClassName?: string;
   textClassName?: string;
   onPress?: () => void;
+  accessibilityRole?: 'link' | 'button';
+  accessibilityLabel?: string;
+  accessibilityHint?: string;
+  disabled?: boolean;
 };
 
-const TextLink = ({ linkTitle, containerClassName, textClassName, onPress }: TextLinkProps) => {
+const TextLink = ({
+  linkTitle,
+  containerClassName,
+  textClassName,
+  accessibilityRole,
+  accessibilityLabel,
+  disabled,
+  accessibilityHint,
+  onPress,
+}: TextLinkProps) => {
   return (
-    <TouchableOpacity className={`${containerClassName}`} onPress={onPress}>
+    <TouchableOpacity
+      disabled={disabled}
+      accessibilityRole={accessibilityRole}
+      accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
+      accessibilityState={{ disabled }}
+      hitSlop={{ top: 8, right: 8, bottom: 8, left: 8 }}
+      className={`${containerClassName}`}
+      onPress={onPress}
+    >
       <Text className={`font-bold text-body color-primary ${textClassName} `}>{linkTitle}</Text>
     </TouchableOpacity>
   );

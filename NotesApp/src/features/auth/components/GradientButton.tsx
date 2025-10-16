@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import themeColors from '@theme/colors.json';
+import Color from '@shared/theme/colors.json';
 
 type GradientButtonProps = {
   title: string;
@@ -14,7 +14,7 @@ const GradientButton = ({ title }: GradientButtonProps) => {
       accessibilityRole="button"
     >
       <LinearGradient
-        colors={[themeColors.primary.DEFAULT, themeColors.secondary.DEFAULT]}
+        colors={[Color.primary.DEFAULT, Color.secondary.DEFAULT]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         className="absolute inset-0"

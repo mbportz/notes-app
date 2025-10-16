@@ -8,8 +8,8 @@ jest.mock('../../components', () => {
 
   const AppBrand: React.FC<{ brandTitle: string; tagline: string }> = ({ brandTitle, tagline }) => (
     <View>
-      <Text testID="brand-title">{brandTitle}</Text>
-      <Text testID="brand-tagline">{tagline}</Text>
+      <Text accessibilityRole="header">{brandTitle}</Text>
+      <Text>{tagline}</Text>
     </View>
   );
 
@@ -17,13 +17,23 @@ jest.mock('../../components', () => {
     footer?: { variantAction?: () => void; forgot?: { onPress: () => void } };
   }> = ({ footer }) => (
     <View>
-      <Text testID="signin-form">Sign In Form</Text>
+      <Text>Sign In Form</Text>
 
-      <Pressable testID="forgot-password" onPress={footer?.forgot?.onPress}>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel="Forgot password"
+        accessibilityHint="Render Forgot password form"
+        onPress={footer?.forgot?.onPress}
+      >
         <Text>Forgot password?</Text>
       </Pressable>
 
-      <Pressable testID="go-to-signup" onPress={footer?.variantAction}>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel="Sign up"
+        accessibilityHint="Returns to the sign-in form"
+        onPress={footer?.variantAction}
+      >
         <Text>Go to Sign Up</Text>
       </Pressable>
     </View>
@@ -31,8 +41,13 @@ jest.mock('../../components', () => {
 
   const SignUpForm: React.FC<{ footer?: { variantAction?: () => void } }> = ({ footer }) => (
     <View>
-      <Text testID="signup-form">Sign Up Form</Text>
-      <Pressable testID="go-to-signin" onPress={footer?.variantAction}>
+      <Text>Sign Up Form</Text>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel="Sign in"
+        accessibilityHint="Render sign-in form"
+        onPress={footer?.variantAction}
+      >
         <Text>Go to Sign In</Text>
       </Pressable>
     </View>
@@ -42,8 +57,13 @@ jest.mock('../../components', () => {
     footer,
   }) => (
     <View>
-      <Text testID="forgot-password-form">Forgot Password Form</Text>
-      <Pressable testID="go-to-signin" onPress={footer?.variantAction}>
+      <Text>Forgot Password Form</Text>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel="Back to sign in"
+        accessibilityHint="Returns to the sign-in form"
+        onPress={footer?.variantAction}
+      >
         <Text>Back to Login</Text>
       </Pressable>
     </View>
@@ -57,7 +77,7 @@ jest.mock('@shared/ui', () => {
   const React = jest.requireActual<typeof import('react')>('react');
   const { View } = jest.requireActual<typeof import('react-native')>('react-native');
   const Screen: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
-    <View testID="screen">{children}</View>
+    <View>{children}</View>
   );
   return { Screen };
 });
@@ -66,35 +86,38 @@ describe('AuthScreen', () => {
   it('renders SignIn by default and toggles to SignUp, then back', () => {
     render(<AuthScreen />);
 
-    expect(screen.getByTestId('brand-title')).toHaveTextContent('Notes App');
-    expect(screen.getByTestId('brand-tagline')).toHaveTextContent(
-      'Your thoughts, organized beautifully',
-    );
-    expect(screen.getByTestId('signin-form')).toBeOnTheScreen();
+    // Brand by role/text (no testIDs)
+    expect(screen.getByRole('header', { name: 'Notes App' })).toBeOnTheScreen();
+    expect(screen.getByText('Your thoughts, organized beautifully')).toBeOnTheScreen();
 
-    fireEvent.press(screen.getByTestId('go-to-signup'));
-    expect(screen.queryByTestId('signin-form')).toBeNull();
-    expect(screen.getByTestId('signup-form')).toBeOnTheScreen();
+    // Default view shows sign-in
+    expect(screen.getByText('Sign In Form')).toBeOnTheScreen();
 
-    fireEvent.press(screen.getByTestId('go-to-signin'));
-    expect(screen.getByTestId('signin-form')).toBeOnTheScreen();
-    expect(screen.queryByTestId('signup-form')).toBeNull();
+    // Go to Sign Up (role + name)
+    fireEvent.press(screen.getByRole('button', { name: /sign up/i }));
+    expect(screen.queryByText('Sign In Form')).toBeNull();
+    expect(screen.getByText('Sign Up Form')).toBeOnTheScreen();
+
+    // Back to Sign In
+    fireEvent.press(screen.getByRole('button', { name: /sign in/i }));
+    expect(screen.getByText('Sign In Form')).toBeOnTheScreen();
+    expect(screen.queryByText('Sign Up Form')).toBeNull();
   });
 
   it('navigates to Forgot Password and back to Sign In', () => {
     render(<AuthScreen />);
 
     // starts on Sign In
-    expect(screen.getByTestId('signin-form')).toBeOnTheScreen();
+    expect(screen.getByText('Sign In Form')).toBeOnTheScreen();
 
     // go to Forgot Password
-    fireEvent.press(screen.getByTestId('forgot-password'));
-    expect(screen.getByTestId('forgot-password-form')).toBeOnTheScreen();
-    expect(screen.queryByTestId('signin-form')).toBeNull();
+    fireEvent.press(screen.getByRole('button', { name: /forgot password/i }));
+    expect(screen.getByText('Forgot Password Form')).toBeOnTheScreen();
+    expect(screen.queryByText('Sign In Form')).toBeNull();
 
     // back to Sign In
-    fireEvent.press(screen.getByTestId('go-to-signin'));
-    expect(screen.getByTestId('signin-form')).toBeOnTheScreen();
-    expect(screen.queryByTestId('forgot-password-form')).toBeNull();
+    fireEvent.press(screen.getByRole('button', { name: /back to sign in/i }));
+    expect(screen.getByText('Sign In Form')).toBeOnTheScreen();
+    expect(screen.queryByText('Forgot Password Form')).toBeNull();
   });
 });

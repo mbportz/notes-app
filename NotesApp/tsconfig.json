@@ -14,20 +14,15 @@
     "paths": {
       "@app/*": ["src/app/*"],
       "@features/*": ["src/features/*"],
-      "@store/*": ["src/store/*"],
-      "@lib/*": ["src/lib/*"],
-      "@styles/*": ["src/styles/*"],
-      "@utils/*": ["src/utils/*"],
-      "@shared/*": ["src/shared/*"],
-      "@theme/*": ["src/theme/*"]
+      "@shared/*": ["src/shared/*"]
     },
     "types": ["jest", "react-native"],
-    "typeRoots": ["./node_modules/@types", "./src/types"]
+    "typeRoots": ["./node_modules/@types", "src/shared/types"]
   },
   "include": [
     "App.tsx",
     "src/**/*",
-    "src/types/**/*",
+    "src/shared/types/**/*",
     "nativewind-env.d.ts",
     "__mock__",
     "__mock__/react-native-safe-area-context.tsx",
