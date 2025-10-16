@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import themeColors from '@theme/colors.json';
+import themeColors from '@shared/theme/colors.json';
 
 type GradientButtonProps = {
   title: string;

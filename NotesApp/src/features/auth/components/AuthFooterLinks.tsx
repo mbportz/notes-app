@@ -3,7 +3,7 @@ import React from 'react';
 import { View, Text, Pressable } from 'react-native';
 import TextLink from './TextLink';
 import { ArrowLeft } from 'lucide-react-native';
-import colors from '@theme/colors.json';
+import colors from '@shared/theme/colors.json';
 
 type Align = 'left' | 'center' | 'right';
 type Gap = 'sm' | 'md' | 'lg';

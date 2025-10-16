@@ -3,7 +3,7 @@ import { Pressable, Text } from 'react-native';
 import type { TextFieldProps } from '@shared/ui/TextField';
 import { TextField } from '@shared/ui';
 import { Eye, EyeClosed, View } from 'lucide-react-native';
-import colors from '@theme/colors.json';
+import colors from '@shared/theme/colors.json';
 
 const PasswordField = ({
   ...inputProps

@@ -17,7 +17,7 @@ type SignUpFormProps = {
 const SignUpForm = ({ footer }: SignUpFormProps) => {
   return (
     <AuthCard pad="lg" gap="md">
-      <FormMessage title="Create Account" subtitle="Sign in to access your notes" />
+      <FormMessage title="Create Account" subtitle="Sign up to start taking notes" />
       <TextField label="Username" placeholder="Enter username" />
       <EmailField label="Email" placeholder="Enter your email" />
       <PasswordField label="Password" placeholder="Enter your password" />
