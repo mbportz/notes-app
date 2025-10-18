@@ -1,7 +1,7 @@
 // src/features/auth/components/AuthFooterLinks.tsx
 import React from 'react';
 import { View, Text, Pressable } from 'react-native';
-import TextLink from './TextLink';
+import { TextLink } from '@shared/ui';
 import { ArrowLeft } from 'lucide-react-native';
 import Color from '@shared/theme/colors.json';
 

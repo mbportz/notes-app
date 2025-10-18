@@ -4,14 +4,16 @@ import LinearGradient from 'react-native-linear-gradient';
 import Color from '@shared/theme/colors.json';
 
 type GradientButtonProps = {
-  title: string;
+  title?: string;
+  onPress?: () => void;
 };
 
-const GradientButton = ({ title }: GradientButtonProps) => {
+const GradientButton = ({ title, onPress }: GradientButtonProps) => {
   return (
     <TouchableOpacity
       className="rounded-xl w-full overflow-hidden h-[50px]"
       accessibilityRole="button"
+      onPress={onPress}
     >
       <LinearGradient
         colors={[Color.primary.DEFAULT, Color.secondary.DEFAULT]}

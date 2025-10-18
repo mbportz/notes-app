@@ -20,5 +20,10 @@
     "DEFAULT": "#111827",
     "muted": "#6B7280",
     "inverse": "#FFFFFF"
+  },
+  "feedback": {
+    "info": "#111827",
+    "success": "#16A34A",
+    "error": "#DC2626"
   }
 }

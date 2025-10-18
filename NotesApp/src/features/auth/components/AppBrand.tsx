@@ -24,7 +24,9 @@ export type AppBrandProps = {
 type TitleProps = Pick<AppBrandProps, 'brandTitle' | 'titleClassName'>;
 
 const Title = ({ brandTitle, titleClassName }: TitleProps) => (
-  <Text className={`text-display font-extrabold ${titleClassName}`}>{brandTitle}</Text>
+  <Text accessibilityRole="header" className={`text-display font-extrabold ${titleClassName}`}>
+    {brandTitle}
+  </Text>
 );
 
 const AppBrand = ({
