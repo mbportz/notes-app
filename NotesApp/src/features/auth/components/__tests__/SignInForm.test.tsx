@@ -2,13 +2,13 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
 import SignInForm from '../SignInForm';
 
-const mutateMock = jest.fn();
+const mockMutate = jest.fn();
 let mockIsPending = false;
 let mockError: unknown;
 
 jest.mock('../../hooks', () => ({
   useLogin: () => ({
-    mutate: mutateMock,
+    mutate: mockMutate,
     isPending: mockIsPending,
     error: mockError,
   }),
@@ -16,7 +16,7 @@ jest.mock('../../hooks', () => ({
 
 describe('SignInForm', () => {
   beforeEach(() => {
-    mutateMock.mockReset();
+    mockMutate.mockReset();
     mockIsPending = false;
     mockError = undefined;
   });
@@ -30,7 +30,7 @@ describe('SignInForm', () => {
 
     expect(getByText('Enter a valid email.')).toBeTruthy();
     expect(getByText('Password is required.')).toBeTruthy();
-    expect(mutateMock).not.toHaveBeenCalled();
+    expect(mockMutate).not.toHaveBeenCalled();
   });
 
   it('submits trimmed credentials when valid', () => {
@@ -41,7 +41,7 @@ describe('SignInForm', () => {
 
     fireEvent.press(getByRole('button', { name: /sign in/i }));
 
-    expect(mutateMock).toHaveBeenCalledWith({
+    expect(mockMutate).toHaveBeenCalledWith({
       email: 'test@example.com',
       password: ' secret ', // password remains as entered; trimming not enforced to preserve spaces
     });
@@ -56,6 +56,6 @@ describe('SignInForm', () => {
 
     fireEvent.press(getByRole('button', { name: /signing in/i }));
 
-    expect(mutateMock).not.toHaveBeenCalled();
+    expect(mockMutate).not.toHaveBeenCalled();
   });
 });

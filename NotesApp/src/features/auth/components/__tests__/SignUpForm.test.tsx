@@ -2,19 +2,19 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
 import SignUpForm from '../SignUpForm';
 
-const mutateMock = jest.fn();
+const mockMutate = jest.fn();
 let mockIsPending = false;
 
 jest.mock('../../hooks', () => ({
   useRegister: () => ({
-    mutate: mutateMock,
+    mutate: mockMutate,
     isPending: mockIsPending,
   }),
 }));
 
 describe('SignUpForm', () => {
   beforeEach(() => {
-    mutateMock.mockReset();
+    mockMutate.mockReset();
     mockIsPending = false;
   });
 
@@ -48,15 +48,15 @@ describe('SignUpForm', () => {
     fireEvent.press(getByRole('button', { name: /create account/i }));
 
     expect(getByText('Passwords do not match.')).toBeTruthy();
-    expect(mutateMock).not.toHaveBeenCalled();
-    mutateMock.mockClear();
+    expect(mockMutate).not.toHaveBeenCalled();
+    mockMutate.mockClear();
 
     fireEvent.changeText(confirmField, 'secret');
     expect(queryByText('Passwords do not match.')).toBeNull();
 
     fireEvent.press(getByRole('button', { name: /create account/i }));
 
-    expect(mutateMock).toHaveBeenCalledWith({
+    expect(mockMutate).toHaveBeenCalledWith({
       username: 'Example',
       email: 'test@example.com',
       password: 'secret',
@@ -77,6 +77,6 @@ describe('SignUpForm', () => {
     const submitButton = getByRole('button', { name: /creating account/i });
     fireEvent.press(submitButton);
 
-    expect(mutateMock).not.toHaveBeenCalled();
+    expect(mockMutate).not.toHaveBeenCalled();
   });
 });
