@@ -1,20 +1,44 @@
-import React from 'react';
-import { Text, Pressable } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { TextLink } from '@shared/ui';
+import React, { useState } from 'react';
+import { View } from 'react-native';
+import { Screen, OutlineButton } from '@shared/ui';
 import { useLogout } from '@features/auth/hooks';
+import { HomeActions, EmptyNotes } from '../components';
+import { AppBrand } from '@features/auth/components';
+import Color from '@shared/theme/colors.json';
+import { LogOut } from 'lucide-react-native';
 
 export default function HomeScreen() {
   const { logout } = useLogout();
+  const [searchValue, setSearchValue] = useState('');
+  const userName = 'test3';
+
   return (
-    <SafeAreaView className="flex-1 items-center justify-center bg-white dark:bg-black">
-      <Text className="text-2xl font-bold dark:text-white">Home</Text>
-      <Pressable accessibilityRole="button" className="mt-4 rounded-xl px-4 py-2 bg-blue-600">
-        <Text className="text-white font-medium">Tap me</Text>
-      </Pressable>
-      <Pressable accessibilityRole="button">
-        <TextLink linkTitle={'Logout'} containerClassName="p-3 m-3 " onPress={logout} />
-      </Pressable>
-    </SafeAreaView>
+    <View className="flex-1 w-full bg-surface-50">
+      <Screen pad="lg" gap="lg">
+        <View className="gap-5">
+          <View className="flex-row items-center justify-between">
+            <AppBrand
+              tagline={`Welcome back, ${userName}`}
+              size="sm"
+              containerClassName="flex-1"
+              rowClassName="items-start"
+            />
+            <OutlineButton
+              title="Sign Out"
+              onPress={logout}
+              icon={<LogOut color={Color.text.DEFAULT} size={18} />}
+              className="h-[44px] px-5"
+              textClassName="text-label"
+            />
+          </View>
+          <HomeActions
+            searchValue={searchValue}
+            onSearchChange={setSearchValue}
+            onNewNote={() => {}}
+          />
+        </View>
+        <EmptyNotes />
+      </Screen>
+    </View>
   );
 }
