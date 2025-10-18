@@ -10,6 +10,8 @@ type GradientButtonProps = {
   textClassName?: string;
   leftIcon?: React.ReactNode;
   disabled?: boolean;
+  accessibilityLabel?: string;
+  accessibilityHint?: string;
 };
 
 const GradientButton = ({
@@ -19,16 +21,21 @@ const GradientButton = ({
   textClassName,
   leftIcon,
   disabled = false,
+  accessibilityLabel,
+  accessibilityHint,
 }: GradientButtonProps) => {
   const defaultSizing = 'w-full h-[50px]';
   const sizing = className ? className : defaultSizing;
   const hasIcon = Boolean(leftIcon);
   const hasTitle = typeof title === 'string' ? title.trim().length > 0 : Boolean(title);
   const contentGap = hasIcon && hasTitle ? 'gap-2' : '';
+  const a11yLabel = accessibilityLabel ?? (hasTitle ? String(title).trim() : undefined) ?? 'button';
   return (
     <TouchableOpacity
       className={`rounded-xl overflow-hidden ${sizing} ${disabled ? 'opacity-60' : ''}`}
       accessibilityRole="button"
+      accessibilityLabel={a11yLabel}
+      accessibilityHint={accessibilityHint}
       disabled={disabled}
       onPress={onPress}
     >

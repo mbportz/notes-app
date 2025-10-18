@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { Screen, OutlineButton } from '@shared/ui';
 import { useLogout } from '@features/auth/hooks';
 import { HomeActions, EmptyNotes } from '../components';
@@ -8,6 +9,7 @@ import Color from '@shared/theme/colors.json';
 import { LogOut } from 'lucide-react-native';
 
 export default function HomeScreen() {
+  const navigation = useNavigation();
   const { logout } = useLogout();
   const [searchValue, setSearchValue] = useState('');
   const userName = 'test3';
@@ -18,6 +20,7 @@ export default function HomeScreen() {
         <View className="gap-5">
           <View className="flex-row items-center justify-between">
             <AppBrand
+              brandTitle="NotesApp"
               tagline={`Welcome back, ${userName}`}
               size="sm"
               containerClassName="flex-1"
@@ -34,7 +37,7 @@ export default function HomeScreen() {
           <HomeActions
             searchValue={searchValue}
             onSearchChange={setSearchValue}
-            onNewNote={() => {}}
+            onNewNote={() => navigation.navigate('New Note' as never)}
           />
         </View>
         <EmptyNotes />
