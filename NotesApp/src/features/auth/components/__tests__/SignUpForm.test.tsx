@@ -31,7 +31,7 @@ describe('SignUpForm', () => {
     fireEvent.press(getByRole('button', { name: /create account/i }));
 
     expect(getByText('Enter a valid email.')).toBeTruthy();
-    expect(mutateMock).not.toHaveBeenCalled();
+    expect(mockMutate).not.toHaveBeenCalled();
   });
 
   it('validates passwords and submits trimmed payload', () => {
