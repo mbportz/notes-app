@@ -9,7 +9,12 @@ const AuthScreen = () => {
 
   return (
     <Screen pad="lg" gap="xl" scroll>
-      <AppBrand brandTitle="Notes App" tagline="Your thoughts, organized beautifully" />
+      <AppBrand
+        tagline="Your thoughts, organized beautifully"
+        size="lg"
+        containerClassName="w-full items-center"
+        taglineClassName="text-center"
+      />
       {(() => {
         switch (form) {
           case 'signup':
