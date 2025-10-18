@@ -11,6 +11,7 @@ module.exports = {
         surface: tokens.surface,
         line: tokens.line,
         text: tokens.text,
+        feedback: tokens.feedback,
       },
       // 🧱 Radii (rounded cards & pill buttons)
       borderRadius: {
