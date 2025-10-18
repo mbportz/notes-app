@@ -49,6 +49,7 @@ describe('SignUpForm', () => {
 
     expect(getByText('Passwords do not match.')).toBeTruthy();
     expect(mutateMock).not.toHaveBeenCalled();
+    mutateMock.mockClear();
 
     fireEvent.changeText(confirmField, 'secret');
     expect(queryByText('Passwords do not match.')).toBeNull();
