@@ -1,25 +1,42 @@
 import { http } from '@shared/api/http';
 import { saveTokens, clearTokens, getRefreshToken } from '@shared/api/tokenStorage';
 
-export type LoginPayload = { email: string; password: string };
-export type LoginResponse = {
-  user: {
-    id: number;
-    username: string;
-    email: string;
-    first_name: string | null;
-    last_name: string | null;
-    email_verified_at: string | null;
-    created_at: string;
-    updated_at: string;
-  };
-  token: string; // access token
-  refresh_token: string; // refresh token
-  refresh_expires_at: string; // ISO string
+type AuthUser = {
+  id: number;
+  username: string;
+  email: string;
+  first_name: string | null;
+  last_name: string | null;
+  email_verified_at: string | null;
+  created_at: string;
+  updated_at: string;
 };
+
+type TokenBundle = {
+  token: string;
+  refresh_token: string;
+  refresh_expires_at: string;
+};
+
+export type LoginPayload = { email: string; password: string };
+export type LoginResponse = { user: AuthUser } & TokenBundle;
+
+export type RegisterPayload = {
+  username: string;
+  email: string;
+  password: string;
+  password_confirmation: string;
+};
+export type RegisterResponse = { user: AuthUser } & TokenBundle;
 
 export async function login(payload: LoginPayload): Promise<LoginResponse> {
   const { data } = await http.post<LoginResponse>('/auth/login', payload);
+  await saveTokens(data.token, data.refresh_token, data.refresh_expires_at);
+  return data;
+}
+
+export async function register(payload: RegisterPayload): Promise<RegisterResponse> {
+  const { data } = await http.post<RegisterResponse>('/auth/register', payload);
   await saveTokens(data.token, data.refresh_token, data.refresh_expires_at);
   return data;
 }

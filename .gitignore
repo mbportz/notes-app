@@ -4,6 +4,8 @@ Thumbs.db
 .env
 .env.*
 *.log
+.eslintcache
+**/.eslintcache
 node_modules/
 npm-debug.log*
 yarn-debug.log*
@@ -126,3 +128,4 @@ notes-api-v1/storage/pail
 # Homestead
 notes-api-v1/Homestead.json
 notes-api-v1/Homestead.yaml
+
